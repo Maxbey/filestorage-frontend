@@ -9,7 +9,7 @@
 
 .App-header {
   background-color: #222;
-  height: 150px;
+  height: 300px;
   padding: 20px;
   color: white;
 }
@@ -20,6 +20,25 @@
 
 .App-intro {
   font-size: large;
+}
+
+#root {
+  height: 100%;
+}
+
+.Form-container {
+  height: 100%;
+  width: 100%;
+}
+
+.Input-container {
+  margin-top: 15px;
+  width: 100%;
+}
+
+.Submit-button {
+  margin-top: 15px;
+  width: 100%;
 }
 
 @keyframes App-logo-spin {
