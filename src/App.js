@@ -1,18 +1,12 @@
 import React, { Component } from 'react';
-
-import { MuiThemeProvider, createMuiTheme } from 'material-ui/styles';
-import blue from 'material-ui/colors/blue';
 import './App.css';
 
-import { FormLayout } from './components/layouts/FormLayout';
-import { LoginForm } from './components/forms/LoginForm';
+import { LoginView } from './views/LoginView';
 
 class App extends Component {
   render() {
     return (
-      <FormLayout>
-        <LoginForm/>
-      </FormLayout>
+      <LoginView/>
     );
   }
 }
