@@ -23,11 +23,15 @@ class LoginForm extends Component {
   }
 
   handleChange(e) {
-    const { name, value } = e.target;
-    this.setState({ [name]: value });
-    
-    delete this.props.errors;
+    const { name, value } = e.target
+    this.setState({ [name]: value })
+
+    if (this.props.validationErrors){
+      if (this.props.validationErrors.hasOwnProperty(name))
+        delete this.props.validationErrors[name]
+    }
   }
+
 
   handleSubmit(e) {
     e.preventDefault();
@@ -37,16 +41,16 @@ class LoginForm extends Component {
   }
 
   getFieldError(fieldName){
-    if (this.props.errors){
-      return this.props.errors[fieldName].error
+    if (this.props.validationErrors){
+      return this.props.validationErrors.hasOwnProperty(fieldName)
     }
-    else
-      return false;
+
+    return false
   }
 
   getFieldHelper(fieldName){
-    if (this.props.errors){
-      return this.props.errors[fieldName].helper
+    if (this.props.validationErrors){
+      return this.props.validationErrors[fieldName]
     }
     else
       return false;
@@ -81,6 +85,9 @@ class LoginForm extends Component {
                 fullWidth={ true }
                 label='Password'
                 onChange={this.handleChange}
+                error={ this.getFieldError('password') }
+                helperText={ this.getFieldHelper('password') }
+                type="password"
               />
             </div>
             <div className="Input-container">
@@ -102,21 +109,10 @@ class LoginForm extends Component {
 }
 
 function mapStateToProps(state) {
-    const helper = state.loginReducer.error;
-    if (helper){
-      return {
-        'errors': {
-          'email': {
-            'error': true,
-            'helper': helper
-          }
-        }
-      }
-    }
-
-    return {};
+    console.log(state.loginReducer);
+    return {...state.loginReducer};
 
 }
 
-const connectedLoginView = connect(mapStateToProps)(LoginForm);
-export { connectedLoginView as LoginForm };
+const connectedLoginForm = connect(mapStateToProps)(LoginForm);
+export { connectedLoginForm as LoginForm };
