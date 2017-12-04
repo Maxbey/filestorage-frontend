@@ -1,5 +1,6 @@
 import {authConstants} from '../constants/authConstants'
 import {AuthService} from '../services/AuthService'
+import { history } from '../middleware/history';
 
 export class AuthActions {
   constructor() {
@@ -14,6 +15,8 @@ export class AuthActions {
       else {
         localStorage.setItem('apiToken', response.data.token);
         dispatch(success())
+
+        history.push('/')
       }
     }
 
@@ -42,6 +45,7 @@ export class AuthActions {
         dispatch(failure(response.data))
       else {
         dispatch(success())
+        history.push('/login/')
       }
 
     }

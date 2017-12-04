@@ -26,6 +26,10 @@
   height: 100%;
 }
 
+#View-container {
+  height: 100%;
+}
+
 .Form-container {
   height: 100%;
   width: 100%;
