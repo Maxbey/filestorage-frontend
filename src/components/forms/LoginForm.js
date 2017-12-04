@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 
 import Button from 'material-ui/Button';
@@ -6,8 +6,9 @@ import TextField from 'material-ui/TextField';
 
 import Card, { CardContent, CardHeader } from 'material-ui/Card';
 import { AuthActions } from '../../actions/AuthActions';
+import { AbstractForm } from './AbstractForm';
 
-class LoginForm extends Component {
+class LoginForm extends AbstractForm {
   constructor(props){
     super(props);
 
@@ -18,42 +19,14 @@ class LoginForm extends Component {
       password: ''
     };
 
-    this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
-
-  handleChange(e) {
-    const { name, value } = e.target
-    this.setState({ [name]: value })
-
-    if (this.props.validationErrors){
-      if (this.props.validationErrors.hasOwnProperty(name))
-        delete this.props.validationErrors[name]
-    }
-  }
-
 
   handleSubmit(e) {
     e.preventDefault();
     const { email, password } = this.state;
     const { dispatch } = this.props;
     dispatch(this.authActions.login(email, password));
-  }
-
-  getFieldError(fieldName){
-    if (this.props.validationErrors){
-      return this.props.validationErrors.hasOwnProperty(fieldName)
-    }
-
-    return false
-  }
-
-  getFieldHelper(fieldName){
-    if (this.props.validationErrors){
-      return this.props.validationErrors[fieldName]
-    }
-    else
-      return false;
   }
 
   render() {
@@ -109,7 +82,6 @@ class LoginForm extends Component {
 }
 
 function mapStateToProps(state) {
-    console.log(state.loginReducer);
     return {...state.loginReducer};
 
 }
