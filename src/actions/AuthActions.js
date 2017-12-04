@@ -6,15 +6,15 @@ export class AuthActions {
     this.authService = new AuthService()
   }
   login(email, password) {
-    return dispatch => {
-      this.authService.login(email, password).then(response => {
-        if (!response.ok)
-          dispatch(failure(response.data))
-        else {
-          localStorage.setItem('apiToken', response.data.token);
-          dispatch(success())
-        }
-      })
+    return async dispatch => {
+      const response = await this.authService.login(email, password)
+
+      if (!response.ok)
+        dispatch(failure(response.data))
+      else {
+        localStorage.setItem('apiToken', response.data.token);
+        dispatch(success())
+      }
     }
 
     function success(){
@@ -33,20 +33,25 @@ export class AuthActions {
   }
 
   register(email, password, firstName, lastName) {
-    return dispatch => {
-      this.authService.register(email, password, firstName, lastName).then(user => {
-        dispatch(success(user))
-      }, error => {
-        dispatch(failure(error))
-      })
+    return async dispatch => {
+      const response = await this.authService.register(
+        email, password, firstName, lastName
+      )
+
+      if (!response.ok)
+        dispatch(failure(response.data))
+      else {
+        dispatch(success())
+      }
+
     }
 
     function success(user){
       return { type: authConstants.REGISTER_SUCCESS, user }
     }
 
-    function failure(error){
-      return { type: authConstants.REGISTER_FAILURE, error }
+    function failure(data){
+      return { type: authConstants.REGISTER_FAILURE, data }
     }
   }
 }
