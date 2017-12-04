@@ -10,9 +10,12 @@ export class AuthService extends AbstractService {
   }
 
   async register(email, password, firstName, lastName){
-    return await this.post(
+    const response = await this.post(
       '/auth/register/',
       {email, password, firstName, lastName}
-    );
+    )
+    const data = await response.json()
+
+    return {ok: response.ok, data}
   }
 };
