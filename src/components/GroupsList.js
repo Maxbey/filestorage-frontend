@@ -12,39 +12,33 @@ import Avatar from 'material-ui/Avatar'
 import IconButton from 'material-ui/IconButton'
 import { FormGroup, FormControlLabel } from 'material-ui/Form'
 import Checkbox from 'material-ui/Checkbox'
-import AttachmentIcon from 'material-ui-icons/Attachment'
-import DeleteIcon from 'material-ui-icons/Delete'
+import GroupIcon from 'material-ui-icons/Group'
+import EditIcon from 'material-ui-icons/Edit'
 
-import { FileActions } from '../actions/FileActions'
+import { GroupActions } from '../actions/GroupActions'
 
-class FilesList extends React.Component {
+class GroupsList extends React.Component {
   constructor(props){
     super(props)
 
-    this.fileActions = new FileActions()
-    this.downloadFile = this.downloadFile.bind(this)
-
-    this.props.dispatch(this.fileActions.getFiles())
+    this.groupActions = new GroupActions()
+    this.props.dispatch(this.groupActions.getGroups())
   }
 
-  downloadFile(e){
-
-  }
-
-  renderFiles(filesData) {
-    return filesData.map(file => (
+  renderGroups(groupsData) {
+    return groupsData.map(group => (
       <ListItem button>
         <ListItemAvatar>
           <Avatar>
-            <AttachmentIcon />
+            <GroupIcon />
           </Avatar>
         </ListItemAvatar>
         <ListItemText
-          primary={file.name}
+          primary={group.name}
         />
         <ListItemSecondaryAction>
-          <IconButton aria-label="Download">
-            <DeleteIcon />
+          <IconButton aria-label="Edit">
+            <EditIcon />
           </IconButton>
         </ListItemSecondaryAction>
       </ListItem>
@@ -55,15 +49,15 @@ class FilesList extends React.Component {
   render(){
     return (
       <List>
-        {this.renderFiles(this.props.files)}
+        {this.renderGroups(this.props.groups)}
       </List>
     )
   }
 }
 
 function mapStateToProps(state) {
-    return {...state.fileReducer}
+    return {...state.groupReducer}
 }
 
-const connected = connect(mapStateToProps)(FilesList)
-export {connected as FilesList}
+const connected = connect(mapStateToProps)(GroupsList)
+export {connected as GroupsList}

@@ -11,6 +11,7 @@ import { LoginView } from './views/LoginView'
 import { SignupView } from './views/SignupView'
 import { UploadView } from './views/UploadView'
 import { FilesView } from './views/FilesView'
+import { GroupsView } from './views/GroupsView'
 
 import 'react-dropzone-component/styles/filepicker.css'
 import 'dropzone/dist/min/dropzone.min.css'
@@ -49,6 +50,7 @@ class App extends Component {
             <Route path="/login/" component={LoginView} />
             <Route path="/signup/" component={SignupView} />
             <Route path="/upload/" component={UploadView} />
+            <Route path="/groups/" component={GroupsView} />
           </div>
         </Router>
       </Provider>
