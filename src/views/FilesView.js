@@ -1,16 +1,16 @@
 import React, { Component } from 'react'
 import { DashboardView } from './DashboardView'
-import { UploadComponent } from '../components/forms/UploadComponent'
+import { FilesList } from '../components/FilesList'
 import Grid from 'material-ui/Grid';
 
-export class UploadView extends Component {
+export class FilesView extends Component {
   render() {
     return (
       <DashboardView>
         <Grid justify='center' xs={12} alignItems='center' container className="Form-container">
-        <Grid item lg={6}>
-          <UploadComponent/>
-        </Grid>
+          <Grid item lg={4}>
+            <FilesList/>
+          </Grid>
         </Grid>
       </DashboardView>
     );

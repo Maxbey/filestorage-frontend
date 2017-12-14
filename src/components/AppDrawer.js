@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import PropTypes from 'prop-types'
+import { Link } from 'react-router-dom'
 import { withStyles } from 'material-ui/styles'
 import Drawer from 'material-ui/Drawer'
 import List, { ListItem, ListItemIcon, ListItemText } from 'material-ui/List'
@@ -32,19 +32,25 @@ class AppDrawer extends React.Component {
       <Drawer open={this.props.open} onRequestClose={this.closeDrawer}>
         <div className={classes.list}>
           <List>
-            <ListItem button>
+            <ListItem button
+              component={Link} to='/' onClick={this.closeDrawer}
+            >
               <ListItemIcon>
                 <StorageIcon />
               </ListItemIcon>
               <ListItemText primary="Files" />
             </ListItem>
-            <ListItem button>
+            <ListItem button
+              component={Link} to='/upload/' onClick={this.closeDrawer}
+            >
               <ListItemIcon>
                 <FileUploadIcon />
               </ListItemIcon>
               <ListItemText primary="Upload files" />
             </ListItem>
-            <ListItem button>
+            <ListItem button
+              component={Link} to='/groups/' onClick={this.closeDrawer}
+            >
               <ListItemIcon>
                 <GroupIcon />
               </ListItemIcon>

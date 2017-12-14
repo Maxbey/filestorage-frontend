@@ -1,4 +1,3 @@
-import { appConfig } from '../config';
 import { AbstractService } from './AbstractService';
 
 export class AuthService extends AbstractService {
