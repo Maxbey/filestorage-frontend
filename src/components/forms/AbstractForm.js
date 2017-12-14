@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-export class AbstractForm extends Component {
+export class AbstractForm extends React.Component {
   constructor(props){
     super(props);
 

@@ -7,7 +7,6 @@ import IconButton from 'material-ui/IconButton'
 import MenuIcon from 'material-ui-icons/Menu'
 import Button from 'material-ui/Button'
 import { withStyles } from 'material-ui/styles'
-import { Link } from 'react-router-dom'
 import { AppActions } from '../../actions/AppActions'
 
 const styles = {
@@ -55,6 +54,6 @@ class AppNav extends React.Component {
 }
 
 const styled = withStyles(styles)(AppNav)
-const connected = connect((s) => {})(styled)
+const connected = connect((s) => {return {}})(styled)
 
 export {connected as AppNav}
