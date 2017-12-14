@@ -5,9 +5,10 @@ import { AppDrawer } from '../components/AppDrawer';
 export class DashboardView extends Component {
   render() {
     return (
-      <div>
+      <div style={{'height': '85%'}}>
         <AppNav/>
         <AppDrawer/>
+        { this.props.children }
       </div>
     );
   }
