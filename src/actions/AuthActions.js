@@ -6,6 +6,7 @@ export class AuthActions {
   constructor() {
     this.authService = new AuthService()
   }
+
   login(email, password) {
     return async dispatch => {
       const response = await this.authService.login(email, password)
