@@ -18,7 +18,6 @@ class App extends Component {
           <div id="View-container">
             <Route path="/login/" component={LoginView} />
             <Route path="/signup/" component={SignupView} />
-            <Route path="/"><h1>Main</h1></Route>
           </div>
         </Router>
       </Provider>
