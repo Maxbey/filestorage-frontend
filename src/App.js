@@ -7,8 +7,10 @@ import { history } from './middleware/history';
 
 import { LoginView } from './views/LoginView'
 import { SignupView } from './views/SignupView'
-import { DashboardView } from './views/DashboardView'
+import { UploadView } from './views/UploadView'
 
+import 'react-dropzone-component/styles/filepicker.css'
+import 'dropzone/dist/min/dropzone.min.css'
 import './App.css'
 
 class App extends Component {
@@ -17,9 +19,9 @@ class App extends Component {
       <Provider store={store}>
         <Router history={history}>
           <div id="View-container">
-            <Route exact path="/" component={DashboardView} />
             <Route path="/login/" component={LoginView} />
             <Route path="/signup/" component={SignupView} />
+            <Route path="/upload/" component={UploadView} />
           </div>
         </Router>
       </Provider>
