@@ -12,6 +12,7 @@ import { SignupView } from './views/SignupView'
 import { UploadView } from './views/UploadView'
 import { FilesView } from './views/FilesView'
 import { GroupsView } from './views/GroupsView'
+import { CreateGroupView } from './views/CreateGroupView'
 
 import 'react-dropzone-component/styles/filepicker.css'
 import 'dropzone/dist/min/dropzone.min.css'
@@ -32,6 +33,7 @@ fetchIntercept.register({
         return [fullUrl, config]
     },
     response: function (response) {
+      console.log(response);
         if (response.status === 403){
           history.push('/login/')
         }
@@ -51,6 +53,7 @@ class App extends Component {
             <Route path="/signup/" component={SignupView} />
             <Route path="/upload/" component={UploadView} />
             <Route path="/groups/" component={GroupsView} />
+            <Route path="/group/" component={CreateGroupView} />
           </div>
         </Router>
       </Provider>
