@@ -10,10 +10,9 @@ import List, {
 } from 'material-ui/List'
 import Avatar from 'material-ui/Avatar'
 import IconButton from 'material-ui/IconButton'
-import { FormGroup, FormControlLabel } from 'material-ui/Form'
 import Checkbox from 'material-ui/Checkbox'
-import AttachmentIcon from 'material-ui-icons/Attachment'
-import DeleteIcon from 'material-ui-icons/Delete'
+import Attachment from 'material-ui/svg-icons/file/attachment'
+import DeleteForever from 'material-ui/svg-icons/action/delete-forever'
 
 import { FileActions } from '../actions/FileActions'
 
@@ -33,21 +32,10 @@ class FilesList extends React.Component {
 
   renderFiles(filesData) {
     return filesData.map(file => (
-      <ListItem button>
-        <ListItemAvatar>
-          <Avatar>
-            <AttachmentIcon />
-          </Avatar>
-        </ListItemAvatar>
-        <ListItemText
-          primary={file.name}
-        />
-        <ListItemSecondaryAction>
-          <IconButton aria-label="Download">
-            <DeleteIcon />
-          </IconButton>
-        </ListItemSecondaryAction>
-      </ListItem>
+      <ListItem
+        primaryText={file.name} leftIcon={<Attachment />}
+        rightIcon={<DeleteForever />}
+      />
     ))
 
 }

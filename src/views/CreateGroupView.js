@@ -1,16 +1,19 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 
-import { FormLayout } from '../components/layouts/FormLayout';
-import { GroupForm } from '../components/forms/GroupForm';
-import { DashboardView } from '../views/DashboardView';
+import { GroupForm } from '../components/forms/GroupForm'
+import { DashboardView } from '../views/DashboardView'
+
+import {Row, Col} from 'react-grid-system'
 
 export class CreateGroupView extends Component {
   render() {
     return (
       <DashboardView>
-        <FormLayout>
-          <GroupForm/>
-        </FormLayout>
+        <Row style={{height: '90%'}} align="center">
+          <Col offset={{md: 4.5}} style={{'padding':'10px'}} md={3}>
+            <GroupForm/>
+          </Col>
+        </Row>
       </DashboardView>
     );
   }

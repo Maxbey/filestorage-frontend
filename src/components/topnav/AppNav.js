@@ -1,26 +1,11 @@
 import React from 'react'
 import { connect } from 'react-redux';
 import AppBar from 'material-ui/AppBar'
-import Toolbar from 'material-ui/Toolbar'
-import Typography from 'material-ui/Typography'
-import IconButton from 'material-ui/IconButton'
-import MenuIcon from 'material-ui-icons/Menu'
-import Button from 'material-ui/Button'
-import { withStyles } from 'material-ui/styles'
-import { AppActions } from '../../actions/AppActions'
+import FlatButton from 'material-ui/FlatButton'
+import IconButton from 'material-ui/IconButton';
+import Menu from 'material-ui/svg-icons/navigation/menu';
 
-const styles = {
-  root: {
-    width: '100%',
-  },
-  flex: {
-    flex: 1,
-  },
-  menuButton: {
-    marginLeft: -12,
-    marginRight: 20,
-  },
-}
+import { AppActions } from '../../actions/AppActions'
 
 class AppNav extends React.Component {
   constructor(){
@@ -34,26 +19,20 @@ class AppNav extends React.Component {
   }
 
   render(){
-    const { classes } = this.props;
     return (
-      <div className={classes.root}>
-        <AppBar position="static">
-          <Toolbar>
-            <IconButton className={classes.menuButton} color="contrast" aria-label="Menu">
-              <MenuIcon onClick={this.openDrawer} />
-            </IconButton>
-            <Typography type="title" color="inherit" className={classes.flex}>
-              File Storage
-            </Typography>
-            <Button color="contrast">Log Out</Button>
-          </Toolbar>
-        </AppBar>
-      </div>
+      <AppBar
+        title={<span>File Storage</span>}
+        iconElementLeft={
+          <IconButton>
+            <Menu onClick={this.openDrawer} />
+          </IconButton>
+        }
+        iconElementRight={<FlatButton label="Log out" />}
+      />
     )
   }
 }
 
-const styled = withStyles(styles)(AppNav)
-const connected = connect((s) => {return {}})(styled)
 
+const connected = connect((s) => {return {}})(AppNav)
 export {connected as AppNav}

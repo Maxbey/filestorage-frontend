@@ -1,10 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import Button from 'material-ui/Button';
+import RaisedButton from 'material-ui/RaisedButton';
 import TextField from 'material-ui/TextField';
 
-import Card, { CardContent, CardHeader } from 'material-ui/Card';
+import Card, { CardText, CardHeader } from 'material-ui/Card';
 import { AuthActions } from '../../actions/AuthActions';
 import { AbstractForm } from './AbstractForm';
 
@@ -33,50 +33,36 @@ class LoginForm extends AbstractForm {
     const { email, password} = this.state
 
     return (
-      <div className="Input-container">
       <Card>
-        <CardHeader
-            title="Log In"
-          />
-        <CardContent>
+        <CardHeader title="File Storage"></CardHeader>
+        <CardText>
           <form>
-            <div className="Input-container">
               <TextField
-                error={ this.getFieldError('email') }
-                helperText={ this.getFieldHelper('email') }
+                errorText={ this.getFieldHelper('email') }
                 name='email'
                 value={email}
                 fullWidth={ true }
-                label='Email'
+                floatingLabelText='Email'
                 onChange={this.handleChange}
               />
-            </div>
-            <div className="Input-container">
               <TextField
                 name='password'
                 value={password}
                 fullWidth={ true }
-                label='Password'
+                floatingLabelText='Password'
                 onChange={this.handleChange}
-                error={ this.getFieldError('password') }
-                helperText={ this.getFieldHelper('password') }
+                errorText={ this.getFieldHelper('password') }
                 type="password"
               />
-            </div>
-            <div className="Input-container">
-              <Button
+              <RaisedButton
                 className="Submit-button"
-                raised
-                color="primary"
+                primary
                 onClick={this.handleSubmit}
-              >
-                Log In
-              </Button>
-            </div>
+                label="Log In"
+              />
           </form>
-        </CardContent>
+        </CardText>
       </Card>
-      </div>
     );
   }
 }

@@ -1,26 +1,32 @@
 import React, { Component } from 'react'
-import Grid from 'material-ui/Grid';
-import Button from 'material-ui/Button';
 import { DashboardView } from './DashboardView'
 import { GroupsList } from '../components/GroupsList'
-import AddIcon from 'material-ui-icons/Add'
+
 import { Link } from 'react-router-dom'
+import FloatingActionButton from 'material-ui/FloatingActionButton'
+import GroupAdd from 'material-ui/svg-icons/social/group-add'
+
+import {Row, Col} from 'react-grid-system'
 
 
 export class GroupsView extends Component {
   render() {
     return (
       <DashboardView>
-        <Grid justify='center' xs={12} alignItems='center' container className="Form-container">
-          <Grid item lg={4}>
+        <Row style={{height: '85%'}} align="center">
+          <Col offset={{md: 3}} md={6}>
             <GroupsList/>
-          </Grid>
-        </Grid>
-        <Button style={{float: 'right', 'margin-right': '20px'}}
-          fab color="primary" aria-label="add" component={Link} to='/group/'
-        >
-          <AddIcon />
-        </Button>
+          </Col>
+        </Row>
+        <Row>
+          <Col style={{padding: 10}} offset={{md: 11}} md={1}>
+            <FloatingActionButton style={{float: 'right'}}
+              containerElement={<Link to='/group/' />}
+            >
+              <GroupAdd/>
+            </FloatingActionButton>
+          </Col>
+        </Row>
       </DashboardView>
     );
   }

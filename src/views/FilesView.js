@@ -1,17 +1,17 @@
 import React, { Component } from 'react'
 import { DashboardView } from './DashboardView'
 import { FilesList } from '../components/FilesList'
-import Grid from 'material-ui/Grid';
+import {Row, Col} from 'react-grid-system'
 
 export class FilesView extends Component {
   render() {
     return (
       <DashboardView>
-        <Grid justify='center' xs={12} alignItems='center' container className="Form-container">
-          <Grid item lg={4}>
+        <Row style={{height: '90%'}} align="center">
+          <Col offset={{md: 3}} md={6}>
             <FilesList/>
-          </Grid>
-        </Grid>
+          </Col>
+        </Row>
       </DashboardView>
     );
   }

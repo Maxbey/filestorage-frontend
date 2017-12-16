@@ -1,4 +1,4 @@
-import { AbstractService } from './AbstractService';
+import { AbstractService } from './AbstractService'
 
 export class UserService extends AbstractService {
   async getUsers(email){

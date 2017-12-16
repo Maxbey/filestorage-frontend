@@ -1,15 +1,13 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-import Button from 'material-ui/Button'
+import RaisedButton from 'material-ui/RaisedButton'
 import TextField from 'material-ui/TextField'
 
 import { GroupActions } from '../../actions/GroupActions'
 import { UserActions } from '../../actions/UserActions'
 import { FileActions } from '../../actions/FileActions'
 import { AbstractForm } from './AbstractForm'
-
-import Input, { InputLabel } from 'material-ui/Input'
 
 class GroupForm extends AbstractForm {
   constructor(props){
@@ -28,46 +26,37 @@ class GroupForm extends AbstractForm {
       files: []
     }
 
-    this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this)
   }
 
   handleSubmit(e) {
-    e.preventDefault();
-    const { name, users, files } = this.state;
-    const { dispatch } = this.props;
+    e.preventDefault()
+    const { name, users, files } = this.state
+    const { dispatch } = this.props
 
-    dispatch(this.groupActions.createGroup(name, users, files));
+    dispatch(this.groupActions.createGroup(name, users, files))
   }
 
   render() {
     return (
-      <div className="Input-container">
-          <form>
-            <div className="Input-container">
-              <TextField
-                error={ this.getFieldError('name') }
-                helperText={ this.getFieldHelper('name') }
-                name='name'
-                value={this.state.email}
-                fullWidth={ true }
-                label='Group name'
-                onChange={this.handleChange}
-              />
-            </div>
+      <div>
+        <TextField
+          errorText={ this.getFieldHelper('name') }
+          name='name'
+          value={this.state.email}
+          fullWidth={ true }
+          floatingLabelText='Group name'
+          onChange={this.handleChange}
+        />
 
-            <div className="Input-container">
-              <Button
-                className="Submit-button"
-                raised
-                color="primary"
-                onClick={this.handleSubmit}
-              >
-                Create
-              </Button>
-            </div>
-          </form>
+        <RaisedButton
+          className="Submit-button"
+          primary
+          onClick={this.handleSubmit}
+          label="Create"
+        />
       </div>
-    );
+    )
   }
 }
 

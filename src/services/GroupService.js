@@ -20,8 +20,9 @@ export class GroupService extends AbstractService {
     const response = await this.post(
       '/group/', {name, users, files}
     )
+    const data = await response.json()
 
-    return {ok: response.ok}
+    return {ok: response.ok, data}
   }
 
   async update(id, name, users, files){
@@ -29,8 +30,9 @@ export class GroupService extends AbstractService {
     const response = await this.put(
       `/group/${id}/`, {name, users, files}
     )
+    const data = await response.json()
 
-    return {ok: response.ok}
+    return {ok: response.ok, data}
   }
 
   async delete(id){
