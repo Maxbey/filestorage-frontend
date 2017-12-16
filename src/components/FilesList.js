@@ -1,16 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { withStyles } from 'material-ui/styles'
-import List, {
-  ListItem,
-  ListItemAvatar,
-  ListItemIcon,
-  ListItemSecondaryAction,
-  ListItemText,
-} from 'material-ui/List'
-import Avatar from 'material-ui/Avatar'
-import IconButton from 'material-ui/IconButton'
-import Checkbox from 'material-ui/Checkbox'
+import List, { ListItem } from 'material-ui/List'
 import Attachment from 'material-ui/svg-icons/file/attachment'
 import DeleteForever from 'material-ui/svg-icons/action/delete-forever'
 

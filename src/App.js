@@ -35,7 +35,6 @@ fetchIntercept.register({
         return [fullUrl, config]
     },
     response: function (response) {
-      console.log(response);
         if (response.status === 403){
           history.push('/login/')
         }

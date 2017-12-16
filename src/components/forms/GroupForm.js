@@ -9,6 +9,8 @@ import { UserActions } from '../../actions/UserActions'
 import { FileActions } from '../../actions/FileActions'
 import { AbstractForm } from './AbstractForm'
 
+import { SelectField } from '../SelectField'
+
 class GroupForm extends AbstractForm {
   constructor(props){
     super(props)
@@ -21,9 +23,7 @@ class GroupForm extends AbstractForm {
     this.props.dispatch(this.fileActions.getFiles())
 
     this.state = {
-      name: '',
-      users: [],
-      files: []
+      name: ''
     }
 
     this.handleSubmit = this.handleSubmit.bind(this)
@@ -34,7 +34,10 @@ class GroupForm extends AbstractForm {
     const { name, users, files } = this.state
     const { dispatch } = this.props
 
-    dispatch(this.groupActions.createGroup(name, users, files))
+    let filesIds = this.fileSelect.state.model.map((item) => item.value)
+    let usersIds = this.userSelect.state.model.map((item) => item.value)
+
+    dispatch(this.groupActions.createGroup(name, filesIds, usersIds))
   }
 
   render() {
@@ -43,11 +46,27 @@ class GroupForm extends AbstractForm {
         <TextField
           errorText={ this.getFieldHelper('name') }
           name='name'
-          value={this.state.email}
+          value={this.state.name}
           fullWidth={ true }
           floatingLabelText='Group name'
           onChange={this.handleChange}
         />
+
+        <SelectField
+         dataSource={this.props.users}
+         labelKey='email'
+         floatingLabel='Share with'
+         hintTextAutocomplete='Search user by e-mail'
+         onRef={ref => (this.userSelect = ref)}
+         />
+
+         <SelectField
+          dataSource={this.props.files}
+          labelKey='name'
+          floatingLabel='Share files'
+          hintTextAutocomplete='Search by name'
+          onRef={ref => (this.fileSelect = ref)}
+          />
 
         <RaisedButton
           className="Submit-button"

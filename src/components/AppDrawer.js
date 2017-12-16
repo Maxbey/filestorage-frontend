@@ -2,7 +2,6 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import Drawer from 'material-ui/Drawer'
-import List, { ListItem, ListItemIcon, ListItemText } from 'material-ui/List'
 import MenuItem from 'material-ui/MenuItem'
 
 import Storage from 'material-ui/svg-icons/device/storage'
@@ -29,15 +28,15 @@ class AppDrawer extends React.Component {
         open={this.props.open} onRequestChange={this.closeDrawer}
         width={250} docked={false}
       >
-        <MenuItem linkButton  containerElement={<Link to='/' />}
+        <MenuItem containerElement={<Link to='/' />}
           onClick={this.closeDrawer} leftIcon={<Storage/>}>
           Files
         </MenuItem>
-        <MenuItem linkButton containerElement={<Link to='/upload/' />}
+        <MenuItem containerElement={<Link to='/upload/' />}
          onClick={this.closeDrawer} leftIcon={<FileUpload/>}>
          Upload files
         </MenuItem>
-        <MenuItem linkButton containerElement={<Link to='/groups/' />}
+        <MenuItem containerElement={<Link to='/groups/' />}
          onClick={this.closeDrawer} leftIcon={<Group/>}>
          Groups
         </MenuItem>

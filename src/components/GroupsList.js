@@ -1,7 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import IconButton from 'material-ui/IconButton'
-import {List, ListItem} from 'material-ui/List';
+import {List, ListItem} from 'material-ui/List'
 
 import Group from 'material-ui/svg-icons/social/group'
 import ModeEdit from 'material-ui/svg-icons/editor/mode-edit'
