@@ -6,16 +6,21 @@ import IconButton from 'material-ui/IconButton';
 import Menu from 'material-ui/svg-icons/navigation/menu';
 
 import { AppActions } from '../../actions/AppActions'
+import { AuthActions } from '../../actions/AuthActions'
 
 class AppNav extends React.Component {
-  constructor(){
-    super()
+  constructor(props){
+    super(props)
 
-    this.openDrawer = this.openDrawer.bind(this)
+    this.authActions = new AuthActions()
   }
 
-  openDrawer(e){
-    this.props.dispatch(AppActions.openDrawer());
+  openDrawer = (e) => {
+    this.props.dispatch(AppActions.openDrawer())
+  }
+
+  logOut = (e) => {
+    this.props.dispatch(this.authActions.logout())
   }
 
   render(){
@@ -27,7 +32,9 @@ class AppNav extends React.Component {
             <Menu onClick={this.openDrawer} />
           </IconButton>
         }
-        iconElementRight={<FlatButton label="Log out" />}
+        iconElementRight={
+          <FlatButton label="Log out" onClick={this.logOut} />
+        }
       />
     )
   }

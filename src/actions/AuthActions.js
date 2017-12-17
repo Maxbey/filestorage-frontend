@@ -24,6 +24,7 @@ export class AuthActions {
 
   logout() {
     localStorage.removeItem('apiToken');
+    history.push('/login/')
 
     return {type: authConstants.LOGOUT};
   }

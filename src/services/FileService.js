@@ -8,7 +8,7 @@ export class FileService extends AbstractService {
     return {ok: response.ok, data}
   }
 
-  async delete(id){
+  async deleteFile(id){
     const response = await this.delete(`/file/${id}`)
 
     return {ok: response.ok}

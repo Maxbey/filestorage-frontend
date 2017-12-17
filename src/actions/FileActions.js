@@ -15,4 +15,14 @@ export class FileActions {
       })
     }
   }
+
+  deleteFile(id) {
+    return async dispatch => {
+      await this.fileService.deleteFile(id)
+      dispatch({
+        type: fileConstants.DELETE_FILE,
+        id: id
+      })
+    }
+  }
 }

@@ -11,20 +11,20 @@ class FilesList extends React.Component {
     super(props)
 
     this.fileActions = new FileActions()
-    this.downloadFile = this.downloadFile.bind(this)
 
     this.props.dispatch(this.fileActions.getFiles())
   }
 
-  downloadFile(e){
-
+  deleteFile = (id) => event => {
+    this.props.dispatch(this.fileActions.deleteFile(id))
   }
 
   renderFiles(filesData) {
     return filesData.map((file, index) => (
       <ListItem
         primaryText={file.name} key={index}
-        leftIcon={<Attachment />} rightIcon={<DeleteForever />}
+        leftIcon={<Attachment />}
+        rightIcon={<DeleteForever onClick={this.deleteFile(file.id)} />}
       />
     ))
 
