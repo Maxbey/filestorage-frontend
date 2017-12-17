@@ -17,4 +17,4 @@ export class AuthService extends AbstractService {
 
     return {ok: response.ok, data}
   }
-};
+}

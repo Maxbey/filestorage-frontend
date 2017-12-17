@@ -1,17 +1,16 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
+import { LoginForm } from '../components/forms/LoginForm'
 
-import { FormLayout } from '../components/layouts/FormLayout';
-import { LoginForm } from '../components/forms/LoginForm';
-import { AuthView } from '../views/AuthView';
+import {Row, Col} from 'react-grid-system'
 
 export class LoginView extends Component {
   render() {
     return (
-      <AuthView>
-        <FormLayout>
+      <Row style={{height: '90%'}} align="center">
+        <Col offset={{md: 4.5}} style={{'padding':'10px'}} md={3}>
           <LoginForm/>
-        </FormLayout>
-      </AuthView>
-    );
+        </Col>
+      </Row>
+    )
   }
 }

@@ -13,7 +13,15 @@ export class AbstractService {
     return this.payloadRequest('POST', path, payload)
   }
 
+  put(path, payload){
+    return this.payloadRequest('PUT', path, payload)
+  }
+
   get(path){
     return fetch(path, {method: 'GET'})
+  }
+
+  delete(path){
+    return fetch(path, {method: 'DELETE'})
   }
 };

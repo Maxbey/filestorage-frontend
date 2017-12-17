@@ -11,7 +11,7 @@ export function loginReducer(state = initialState, action) {
         validationErrors: ValidationErrorsHandler.parseErrors(action.data.errors)
       }
     case authConstants.LOGOUT:
-      return {};
+      return {}
     default:
       return state
   }

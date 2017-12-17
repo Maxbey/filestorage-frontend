@@ -1,19 +1,15 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
-import { withStyles } from 'material-ui/styles'
 import Drawer from 'material-ui/Drawer'
-import List, { ListItem, ListItemIcon, ListItemText } from 'material-ui/List'
-import FileUploadIcon from 'material-ui-icons/FileUpload'
-import StorageIcon from 'material-ui-icons/Storage'
-import GroupIcon from 'material-ui-icons/Group'
-import { AppActions } from '../actions/AppActions'
+import MenuItem from 'material-ui/MenuItem'
 
-const styles = {
-  list: {
-    width: 250
-  }
-}
+import Storage from 'material-ui/svg-icons/device/storage'
+import FileUpload from 'material-ui/svg-icons/file/file-upload'
+import Group from 'material-ui/svg-icons/social/group'
+
+
+import { AppActions } from '../actions/AppActions'
 
 class AppDrawer extends React.Component {
   constructor(){
@@ -27,37 +23,23 @@ class AppDrawer extends React.Component {
   }
 
   render() {
-    const { classes } = this.props;
     return (
-      <Drawer open={this.props.open} onRequestClose={this.closeDrawer}>
-        <div className={classes.list}>
-          <List>
-            <ListItem button
-              component={Link} to='/' onClick={this.closeDrawer}
-            >
-              <ListItemIcon>
-                <StorageIcon />
-              </ListItemIcon>
-              <ListItemText primary="Files" />
-            </ListItem>
-            <ListItem button
-              component={Link} to='/upload/' onClick={this.closeDrawer}
-            >
-              <ListItemIcon>
-                <FileUploadIcon />
-              </ListItemIcon>
-              <ListItemText primary="Upload files" />
-            </ListItem>
-            <ListItem button
-              component={Link} to='/groups/' onClick={this.closeDrawer}
-            >
-              <ListItemIcon>
-                <GroupIcon />
-              </ListItemIcon>
-              <ListItemText primary="Groups" />
-            </ListItem>
-          </List>
-        </div>
+      <Drawer
+        open={this.props.open} onRequestChange={this.closeDrawer}
+        width={250} docked={false}
+      >
+        <MenuItem containerElement={<Link to='/' />}
+          onClick={this.closeDrawer} leftIcon={<Storage/>}>
+          Files
+        </MenuItem>
+        <MenuItem containerElement={<Link to='/upload/' />}
+         onClick={this.closeDrawer} leftIcon={<FileUpload/>}>
+         Upload files
+        </MenuItem>
+        <MenuItem containerElement={<Link to='/groups/' />}
+         onClick={this.closeDrawer} leftIcon={<Group/>}>
+         Groups
+        </MenuItem>
       </Drawer>
     );
   }
@@ -67,7 +49,6 @@ function mapStateToProps(state) {
     return {...state.drawerReducer}
 }
 
-const styled = withStyles(styles)(AppDrawer)
-const connected = connect(mapStateToProps)(styled)
+const connected = connect(mapStateToProps)(AppDrawer)
 
 export {connected as AppDrawer}
