@@ -35,7 +35,7 @@ export class GroupService extends AbstractService {
     return {ok: response.ok, data}
   }
 
-  async delete(id){
+  async deleteGroup(id){
     const response = await this.delete(`/group/${id}/`)
 
     return {ok: response.ok}

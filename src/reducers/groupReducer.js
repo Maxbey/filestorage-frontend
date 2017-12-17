@@ -3,7 +3,7 @@ import { ValidationErrorsHandler } from '../helpers/ValidationErrorsHandler'
 
 let groups = []
 
-export function groupReducer(state, action) {
+export function groupReducer(state = {groups: []}, action) {
   switch (action.type) {
     case groupConstants.GROUP_FAILURE:
       return {
@@ -12,10 +12,15 @@ export function groupReducer(state, action) {
     case groupConstants.GET_GROUPS:
       groups = action.data
 
-      return {groups}
+      return {groups: action.data}
     case groupConstants.GET_GROUP:
-      return {group: action.data}
+      return {
+        ...state,
+        group: action.data
+      }
     default:
-      return {groups}
+      return {
+        ...state
+      }
   }
 }
