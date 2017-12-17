@@ -21,10 +21,10 @@ class FilesList extends React.Component {
   }
 
   renderFiles(filesData) {
-    return filesData.map(file => (
+    return filesData.map((file, index) => (
       <ListItem
-        primaryText={file.name} leftIcon={<Attachment />}
-        rightIcon={<DeleteForever />}
+        primaryText={file.name} key={index}
+        leftIcon={<Attachment />} rightIcon={<DeleteForever />}
       />
     ))
 

@@ -34,8 +34,8 @@ class GroupForm extends AbstractForm {
     const { name, users, files } = this.state
     const { dispatch } = this.props
 
-    let filesIds = this.fileSelect.state.model.map((item) => item.value)
-    let usersIds = this.userSelect.state.model.map((item) => item.value)
+    let filesIds = this.fileSelect.state.model.map((item) => item.value.id)
+    let usersIds = this.userSelect.state.model.map((item) => item.value.id)
 
     dispatch(this.groupActions.createGroup(name, filesIds, usersIds))
   }

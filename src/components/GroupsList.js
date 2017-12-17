@@ -16,8 +16,9 @@ class GroupsList extends React.Component {
   }
 
   renderGroups(groupsData) {
-    return groupsData.map(group => (
+    return groupsData.map((group, index) => (
       <ListItem
+        key={index}
         primaryText={group.name} leftIcon={<Group />}
         rightIcon={<ModeEdit />}
       />
