@@ -49,7 +49,7 @@ export class GroupActions {
 
   deleteGroup(id) {
     return async dispatch => {
-      const response = await this.groupService.delete(id)
+      const response = await this.groupService.deleteGroup(id)
       history.push('/groups/')
     }
   }

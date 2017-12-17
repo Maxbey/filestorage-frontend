@@ -1,5 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import { Link } from 'react-router-dom'
+
 import {List, ListItem} from 'material-ui/List'
 
 import Group from 'material-ui/svg-icons/social/group'
@@ -21,6 +23,7 @@ class GroupsList extends React.Component {
         key={index}
         primaryText={group.name} leftIcon={<Group />}
         rightIcon={<ModeEdit />}
+        containerElement={<Link to={`/groups/${group.id}`} />}
       />
     ))
 

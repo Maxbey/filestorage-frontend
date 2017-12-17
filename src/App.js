@@ -14,6 +14,7 @@ import { UploadView } from './views/UploadView'
 import { FilesView } from './views/FilesView'
 import { GroupsView } from './views/GroupsView'
 import { CreateGroupView } from './views/CreateGroupView'
+import { GroupDetailView } from './views/GroupDetailView'
 
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import 'react-dropzone-component/styles/filepicker.css'
@@ -54,7 +55,8 @@ class App extends Component {
               <Route path="/login/" component={LoginView} />
               <Route path="/signup/" component={SignupView} />
               <Route path="/upload/" component={UploadView} />
-              <Route path="/groups/" component={GroupsView} />
+              <Route exact path="/groups/:id/" component={GroupDetailView} />
+              <Route exact path="/groups/" component={GroupsView} />
               <Route path="/group/" component={CreateGroupView} />
             </Container>
           </Router>

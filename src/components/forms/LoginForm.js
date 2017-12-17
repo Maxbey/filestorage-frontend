@@ -1,32 +1,32 @@
-import React from 'react';
-import { connect } from 'react-redux';
+import React from 'react'
+import { connect } from 'react-redux'
 
-import RaisedButton from 'material-ui/RaisedButton';
-import TextField from 'material-ui/TextField';
+import RaisedButton from 'material-ui/RaisedButton'
+import TextField from 'material-ui/TextField'
 
-import Card, { CardText, CardHeader } from 'material-ui/Card';
-import { AuthActions } from '../../actions/AuthActions';
-import { AbstractForm } from './AbstractForm';
+import Card, { CardText, CardHeader } from 'material-ui/Card'
+import { AuthActions } from '../../actions/AuthActions'
+import { AbstractForm } from './AbstractForm'
 
 class LoginForm extends AbstractForm {
   constructor(props){
-    super(props);
+    super(props)
 
-    this.authActions = new AuthActions();
+    this.authActions = new AuthActions()
 
     this.state = {
       email: '',
       password: ''
-    };
+    }
 
-    this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this)
   }
 
   handleSubmit(e) {
-    e.preventDefault();
-    const { email, password } = this.state;
-    const { dispatch } = this.props;
-    dispatch(this.authActions.login(email, password));
+    e.preventDefault()
+    const { email, password } = this.state
+    const { dispatch } = this.props
+    dispatch(this.authActions.login(email, password))
   }
 
   render() {
@@ -68,9 +68,9 @@ class LoginForm extends AbstractForm {
 }
 
 function mapStateToProps(state) {
-    return {...state.loginReducer};
+    return {...state.loginReducer}
 
 }
 
-const connectedLoginForm = connect(mapStateToProps)(LoginForm);
-export { connectedLoginForm as LoginForm };
+const connectedLoginForm = connect(mapStateToProps)(LoginForm)
+export { connectedLoginForm as LoginForm }
