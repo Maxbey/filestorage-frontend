@@ -1,11 +1,10 @@
 import { authConstants } from '../constants/authConstants'
 import { ValidationErrorsHandler } from '../helpers/ValidationErrorsHandler'
 
-let apiToken = localStorage.getItem('apiToken')
-const initialState = apiToken ? { loggedIn: true, apiToken } : {}
-
-export function loginReducer(state = initialState, action) {
+export function loginReducer(state = {}, action) {
   switch (action.type) {
+    case authConstants.LOGIN_SUCCESS:
+      return {...state, currentUser: parseInt(action.data.user_id)}
     case authConstants.LOGIN_FAILURE:
       return {
         validationErrors: ValidationErrorsHandler.parseErrors(action.data.errors)
@@ -13,6 +12,6 @@ export function loginReducer(state = initialState, action) {
     case authConstants.LOGOUT:
       return {}
     default:
-      return state
+      return {...state}
   }
 }
