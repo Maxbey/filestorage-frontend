@@ -15,4 +15,14 @@ export class UserActions {
       })
     }
   }
+
+  getCurrent() {
+    return async dispatch => {
+      const response = await this.userService.getCurrent()
+      dispatch({
+        type: userConstants.GET_CURRENT,
+        data: response.data
+      })
+    }
+  }
 }

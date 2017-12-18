@@ -4,7 +4,8 @@ import { ValidationErrorsHandler } from '../helpers/ValidationErrorsHandler'
 export function loginReducer(state = {}, action) {
   switch (action.type) {
     case authConstants.LOGIN_SUCCESS:
-      return {...state, currentUser: parseInt(action.data.user_id)}
+      console.log('HERE');
+      return {...state, user_id: parseInt(action.data.user_id)}
     case authConstants.LOGIN_FAILURE:
       return {
         validationErrors: ValidationErrorsHandler.parseErrors(action.data.errors)

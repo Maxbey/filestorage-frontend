@@ -1,16 +1,12 @@
 import { fileConstants } from '../constants/fileConstants'
 
-let files = []
-
-export function fileReducer(state, action) {
+export function fileReducer(state = {files: []}, action) {
   switch (action.type) {
+    case fileConstants.GET_FILE:
+      return {...state, file: action.data}
     case fileConstants.GET_FILES:
-      files = action.data
-      return {files: action.data}
-    case fileConstants.DELETE_FILE:
-      files = files.filter(file => file.id !== action.id)
-      return {files: files}
+      return {...state, files: action.data}
     default:
-      return {files: files}
+      return {...state}
   }
 }

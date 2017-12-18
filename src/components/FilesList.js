@@ -1,5 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import { Link } from 'react-router-dom'
+
 import List, { ListItem } from 'material-ui/List'
 import Attachment from 'material-ui/svg-icons/file/attachment'
 import DeleteForever from 'material-ui/svg-icons/action/delete-forever'
@@ -15,20 +17,15 @@ class FilesList extends React.Component {
     this.props.dispatch(this.fileActions.getFiles())
   }
 
-  deleteFile = (id) => event => {
-    this.props.dispatch(this.fileActions.deleteFile(id))
-  }
-
   renderFiles(filesData) {
     return filesData.map((file, index) => (
       <ListItem
         primaryText={file.name} key={index}
         leftIcon={<Attachment />}
-        rightIcon={<DeleteForever onClick={this.deleteFile(file.id)} />}
+        containerElement={<Link to={`/files/${file.id}`} />}
       />
     ))
-
-}
+  }
 
   render(){
     return (

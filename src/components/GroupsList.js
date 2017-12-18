@@ -3,9 +3,8 @@ import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 
 import {List, ListItem} from 'material-ui/List'
-
+import Divider from 'material-ui/Divider';
 import Group from 'material-ui/svg-icons/social/group'
-import ModeEdit from 'material-ui/svg-icons/editor/mode-edit'
 
 import { GroupActions } from '../actions/GroupActions'
 
@@ -17,14 +16,19 @@ class GroupsList extends React.Component {
     this.props.dispatch(this.groupActions.getGroups())
   }
 
+  editGroup = (e) => {
+
+  }
+
   renderGroups(groupsData) {
     return groupsData.map((group, index) => (
-      <ListItem
-        key={index}
-        primaryText={group.name} leftIcon={<Group />}
-        rightIcon={<ModeEdit />}
-        containerElement={<Link to={`/groups/${group.id}`} />}
-      />
+      <div>
+        <ListItem
+          key={index}
+          primaryText={group.name} leftIcon={<Group />}
+          containerElement={<Link to={`/groups/${group.id}`} />}
+        />
+      </div>
     ))
 
 }
