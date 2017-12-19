@@ -10,8 +10,8 @@ export class CreateGroupView extends Component {
     return (
       <DashboardView>
         <Row style={{height: '90%'}} align="center">
-          <Col offset={{md: 4.5}} style={{'padding':'10px'}} md={3}>
-            <GroupForm/>
+          <Col offset={{md: 4}} style={{'padding':'10px'}} md={4}>
+            <GroupForm submitLabel='create' submitAction='CREATE'/>
           </Col>
         </Row>
       </DashboardView>
