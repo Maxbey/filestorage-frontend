@@ -12,10 +12,10 @@ export class AuthActions {
       const response = await this.authService.login(email, password)
 
       if (!response.ok)
-        dispatch({type: authConstants.LOGIN_FAILURE, 'data': response.data})
+        dispatch({type: authConstants.LOGIN_FAILURE, data: response.data})
       else {
         localStorage.setItem('apiToken', response.data.token)
-        dispatch({type: authConstants.LOGIN_SUCCESS})
+        dispatch({type: authConstants.LOGIN_SUCCESS, data: response.data})
 
         history.push('/')
       }

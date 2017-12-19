@@ -1,9 +1,41 @@
 import { fileConstants } from '../constants/fileConstants'
 import { FileService } from '../services/FileService'
 
+import { history } from '../middleware/history';
+
 export class FileActions {
   constructor() {
     this.fileService = new FileService()
+  }
+
+  getFile(id) {
+    return async dispatch => {
+      const response = await this.fileService.getFile(id)
+      dispatch({
+        type: fileConstants.GET_FILE,
+        data: response.data
+      })
+    }
+  }
+
+  likeFile(id) {
+    return async dispatch => {
+      const response = await this.fileService.likeFile(id)
+      dispatch({
+        type: fileConstants.GET_FILE,
+        data: response.data
+      })
+    }
+  }
+
+  unlikeFile(id) {
+    return async dispatch => {
+      const response = await this.fileService.unlikeFile(id)
+      dispatch({
+        type: fileConstants.GET_FILE,
+        data: response.data
+      })
+    }
   }
 
   getFiles() {
@@ -23,6 +55,7 @@ export class FileActions {
         type: fileConstants.DELETE_FILE,
         id: id
       })
+      history.push('/')
     }
   }
 }

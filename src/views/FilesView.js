@@ -8,7 +8,7 @@ export class FilesView extends Component {
     return (
       <DashboardView>
         <Row style={{height: '90%'}} align="center">
-          <Col offset={{md: 3}} md={6}>
+          <Col offset={{md: 4}} md={4}>
             <FilesList/>
           </Col>
         </Row>

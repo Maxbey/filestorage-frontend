@@ -36,7 +36,8 @@ export class SelectField extends Component {
   }
 
   render() {
-    const dataSourceNodes = this.props.dataSource.map((item, index) => (
+    const source = this.props.dataSource ? this.props.dataSource : []
+    const dataSourceNodes = source.map((item, index) => (
       <div key={index} value={item}
        label={item[this.props.labelKey]}>{item[this.props.labelKey]}
       </div>

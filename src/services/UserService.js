@@ -7,4 +7,11 @@ export class UserService extends AbstractService {
 
     return {ok: response.ok, data}
   }
+
+  async getCurrent(){
+    const response = await this.get('/user/current/')
+    const data = await response.json()
+
+    return {ok: response.ok, data}
+  }
 };

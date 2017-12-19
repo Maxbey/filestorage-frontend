@@ -14,7 +14,7 @@ export class GroupsView extends Component {
     return (
       <DashboardView>
         <Row style={{height: '85%'}} align="center">
-          <Col offset={{md: 3}} md={6}>
+          <Col offset={{md: 4}} md={4}>
             <GroupsList/>
           </Col>
         </Row>
