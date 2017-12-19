@@ -16,10 +16,6 @@ class GroupsList extends React.Component {
     this.props.dispatch(this.groupActions.getGroups())
   }
 
-  editGroup = (e) => {
-
-  }
-
   renderGroups(groupsData) {
     return groupsData.map((group, index) => (
       <div>

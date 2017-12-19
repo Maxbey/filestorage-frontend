@@ -1,7 +1,7 @@
 import { fileConstants } from '../constants/fileConstants'
 import { FileService } from '../services/FileService'
 
-import { history } from '../middleware/history';
+import { history } from '../middleware/history'
 
 export class FileActions {
   constructor() {
@@ -56,6 +56,28 @@ export class FileActions {
         id: id
       })
       history.push('/')
+    }
+  }
+
+  createComment(content, fileId) {
+    return async dispatch => {
+      const response = await this.fileService.createComment(content, fileId)
+      dispatch({
+        type: fileConstants.GET_FILE,
+        data: response.data
+      })
+    }
+  }
+
+  deleteComment(commentId, fileId) {
+    return async dispatch => {
+      const response = await this.fileService.deleteComment(
+        commentId, fileId
+      )
+      dispatch({
+        type: fileConstants.GET_FILE,
+        data: response.data
+      })
     }
   }
 }
