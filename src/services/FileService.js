@@ -34,4 +34,23 @@ export class FileService extends AbstractService {
 
     return {ok: response.ok}
   }
+
+  async createComment(content, fileId){
+    const response = await this.post(
+      `/file/${fileId}/comment/`, {content}
+    )
+    const data = await response.json()
+
+    return {ok: response.ok, data}
+  }
+
+  async deleteComment(commentId, fileId){
+    const response = await this.delete(
+      `/file/${fileId}/comment/${commentId}`
+    )
+
+    const data = await response.json()
+
+    return {ok: response.ok, data}
+  }
 };
