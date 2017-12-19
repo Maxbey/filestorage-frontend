@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { Link } from 'react-router-dom'
 import {Row, Col} from 'react-grid-system'
 
 import TextField from 'material-ui/TextField'
@@ -63,6 +64,9 @@ class GroupDetailView extends Component {
         </div>
         <RaisedButton style={{marginTop: '20px'}}
           label="Edit" primary fullWidth
+          containerElement={
+            <Link to={`/groups/${this.props.group.id}/edit`} />
+          }
         />
         <RaisedButton style={{marginTop: '20px'}}
          label="Delete" secondary fullWidth onClick={this.deleteGroup}

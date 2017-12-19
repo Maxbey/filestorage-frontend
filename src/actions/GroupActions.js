@@ -23,9 +23,11 @@ export class GroupActions {
     }
   }
 
-  createGroup(name, users, files) {
+  createGroup(group) {
     return async dispatch => {
-      const response = await this.groupService.create(name, users, files)
+      const response = await this.groupService.create(
+        group.name, group.users, group.files
+      )
 
       if (!response.ok)
         dispatch({type: groupConstants.GROUP_FAILURE, 'data': response.data})
@@ -35,9 +37,11 @@ export class GroupActions {
     }
   }
 
-  updateGroup(name, users, files) {
+  updateGroup(group) {
     return async dispatch => {
-      const response = await this.groupService.update(name, users, files)
+      const response = await this.groupService.update(
+        group.id, group.name, group.users, group.files
+      )
 
       if (!response.ok)
         dispatch({type: groupConstants.GROUP_FAILURE, 'data': response.data})
