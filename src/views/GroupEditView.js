@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import {Row, Col} from 'react-grid-system'
+import Subheader from 'material-ui/Subheader'
 
 import { GroupForm } from '../components/forms/GroupForm'
 import { DashboardView } from './DashboardView'
@@ -38,6 +39,7 @@ class GroupEditView extends Component {
       <DashboardView>
         <Row style={{height: '85%'}} align="center">
           <Col offset={{md: 4}} md={4}>
+            <Subheader style={{fontSize: '32px'}}>Edit group</Subheader>
             {this.renderForm()}
           </Col>
         </Row>

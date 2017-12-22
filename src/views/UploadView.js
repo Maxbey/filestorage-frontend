@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+import Subheader from 'material-ui/Subheader'
+
 import { DashboardView } from './DashboardView'
 import { UploadComponent } from '../components/forms/UploadComponent'
 
@@ -9,11 +11,12 @@ export class UploadView extends Component {
     return (
       <DashboardView>
         <Row style={{height: '90%'}} align="center">
-          <Col align="center" md={3}></Col>
-          <Col style={{'padding':'10px'}} md={6}>
+          <Col align="center" offset={{md: 3}} style={{'padding':'10px'}} md={6}>
+            <Subheader style={{fontSize: '32px', padding: '0 0 30px 0'}}>
+              Upload files
+            </Subheader>
             <UploadComponent/>
           </Col>
-          <Col align="center" md={3}></Col>
         </Row>
       </DashboardView>
     );

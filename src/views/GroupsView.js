@@ -3,6 +3,7 @@ import { DashboardView } from './DashboardView'
 import { GroupsList } from '../components/GroupsList'
 
 import { Link } from 'react-router-dom'
+import Subheader from 'material-ui/Subheader'
 import FloatingActionButton from 'material-ui/FloatingActionButton'
 import GroupAdd from 'material-ui/svg-icons/social/group-add'
 
@@ -15,6 +16,7 @@ export class GroupsView extends Component {
       <DashboardView>
         <Row style={{height: '85%'}} align="center">
           <Col offset={{md: 4}} md={4}>
+            <Subheader style={{fontSize: '32px'}}>Groups</Subheader>
             <GroupsList/>
           </Col>
         </Row>
