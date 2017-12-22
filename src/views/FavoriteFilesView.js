@@ -8,22 +8,21 @@ import { DashboardView } from './DashboardView'
 import { FilesList } from '../components/FilesList'
 
 
-class FilesView extends Component {
+class FavoriteFilesView extends Component {
   constructor(props){
     super(props)
 
     this.fileActions = new FileActions()
 
-    this.props.dispatch(this.fileActions.getFiles())
+    this.props.dispatch(this.fileActions.getFavoriteFiles())
   }
 
   renderFiles(){
     const files = this.props.files
 
-    if (!files){
+    if (files === undefined){
       return
     }
-    console.log(files.map);
 
     return <FilesList files={files}/>
   }
@@ -47,5 +46,5 @@ function mapStateToProps(state) {
     return {...state.fileReducer}
 }
 
-const connected = connect(mapStateToProps)(FilesView)
-export {connected as FilesView}
+const connected = connect(mapStateToProps)(FavoriteFilesView)
+export {connected as FavoriteFilesView}

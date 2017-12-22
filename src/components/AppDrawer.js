@@ -7,6 +7,7 @@ import MenuItem from 'material-ui/MenuItem'
 import Storage from 'material-ui/svg-icons/device/storage'
 import FileUpload from 'material-ui/svg-icons/file/file-upload'
 import Group from 'material-ui/svg-icons/social/group'
+import Favorite from 'material-ui/svg-icons/action/favorite'
 
 
 import { AppActions } from '../actions/AppActions'
@@ -39,6 +40,10 @@ class AppDrawer extends React.Component {
         <MenuItem containerElement={<Link to='/groups/' />}
          onClick={this.closeDrawer} leftIcon={<Group/>}>
          Groups
+        </MenuItem>
+        <MenuItem containerElement={<Link to='/favorites/' />}
+         onClick={this.closeDrawer} leftIcon={<Favorite/>}>
+         Favorite files
         </MenuItem>
       </Drawer>
     );

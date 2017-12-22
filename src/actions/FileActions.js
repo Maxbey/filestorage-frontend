@@ -48,6 +48,16 @@ export class FileActions {
     }
   }
 
+  getFavoriteFiles() {
+    return async dispatch => {
+      const response = await this.fileService.getFavoriteFiles()
+      dispatch({
+        type: fileConstants.GET_FILES,
+        data: response.data
+      })
+    }
+  }
+
   deleteFile(id) {
     return async dispatch => {
       await this.fileService.deleteFile(id)

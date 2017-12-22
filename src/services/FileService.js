@@ -29,6 +29,13 @@ export class FileService extends AbstractService {
     return {ok: response.ok, data}
   }
 
+  async getFavoriteFiles(){
+    const response = await this.get('/file/favorite/')
+    const data = await response.json()
+
+    return {ok: response.ok, data}
+  }
+
   async deleteFile(id){
     const response = await this.delete(`/file/${id}`)
 

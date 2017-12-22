@@ -12,6 +12,7 @@ import { LoginView } from './views/LoginView'
 import { SignupView } from './views/SignupView'
 import { UploadView } from './views/UploadView'
 import { FilesView } from './views/FilesView'
+import { FavoriteFilesView } from './views/FavoriteFilesView'
 import { FileDetailView } from './views/FileDetailView'
 import { GroupsView } from './views/GroupsView'
 import { CreateGroupView } from './views/CreateGroupView'
@@ -54,6 +55,7 @@ class App extends Component {
           <Router history={history}>
             <Container id="View-container" fluid>
               <Route exact path="/" component={FilesView} />
+              <Route exact path="/favorites/" component={FavoriteFilesView} />
               <Route exact path="/files/:id/" component={FileDetailView} />
               <Route path="/login/" component={LoginView} />
               <Route path="/signup/" component={SignupView} />
