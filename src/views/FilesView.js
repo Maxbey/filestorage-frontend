@@ -25,7 +25,6 @@ class FilesView extends Component {
     if (!files){
       return
     }
-    console.log(files.map);
 
     return <FilesList files={files}/>
   }

@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import * as download from 'downloadjs'
 import {Row, Col} from 'react-grid-system'
 
 import TextField from 'material-ui/TextField'
@@ -15,6 +16,7 @@ import {List, ListItem} from 'material-ui/List'
 import { DashboardView } from './DashboardView'
 import { FileActions } from '../actions/FileActions'
 import { UserActions } from '../actions/UserActions'
+
 
 import Badge from 'material-ui/Badge'
 import IconButton from 'material-ui/IconButton'
@@ -99,6 +101,10 @@ class FileDetailView extends Component {
       this.props.dispatch(this.fileActions.likeFile(file.id))
   }
 
+  handleDownload = (file) => event => {
+    download(new Blob([file.content]), file.name, "text/plain")
+  }
+
   renderLikeBadge(file){
     const user = this.props.user
 
@@ -160,6 +166,10 @@ class FileDetailView extends Component {
             fullWidth
             floatingLabelText='File name'
             name='comment'
+          />
+          <RaisedButton style={{marginTop: '20px'}}
+           label="Download" primary fullWidth
+           onClick={this.handleDownload(file)}
           />
           {this.renderDeleteButton()}
         </div>
@@ -228,7 +238,7 @@ class FileDetailView extends Component {
 
     return (
       <DashboardView>
-        <Row style={{height: '85%'}} align="center">
+        <Row style={{height: '77%'}} align="center">
           <Col offset={{md: 4}} md={4}>
             {this.renderDetails()}
           </Col>

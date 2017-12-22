@@ -14,7 +14,7 @@ export class GroupsView extends Component {
   render() {
     return (
       <DashboardView>
-        <Row style={{height: '85%'}} align="center">
+        <Row style={{height: '77%'}} align="center">
           <Col offset={{md: 4}} md={4}>
             <Subheader style={{fontSize: '32px'}}>Groups</Subheader>
             <GroupsList/>
