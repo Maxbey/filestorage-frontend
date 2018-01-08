@@ -22,7 +22,7 @@ class FilesView extends Component {
   renderFiles(){
     const files = this.props.files
 
-    if (!files){
+    if (!files.map){
       return
     }
 
